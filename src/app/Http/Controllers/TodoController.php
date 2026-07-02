@@ -39,8 +39,45 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        // 検証に失敗すると自動で前の画面に戻り、エラーと入力値が引き継がれる
-        $validated = $request->validate(
+        $validated = $this->validateTodo($request);
+
+        Todo::create($validated);
+
+        // PRG パターン: 保存後はリダイレクトして二重登録を防ぐ
+        return redirect()
+            ->route('todos.index')
+            ->with('success', 'TODOを作成しました。');
+    }
+
+    /**
+     * 編集フォームを表示する
+     */
+    public function edit(Todo $todo)
+    {
+        return view('todos.edit', ['todo' => $todo]);
+    }
+
+    /**
+     * TODO を更新する
+     */
+    public function update(Request $request, Todo $todo)
+    {
+        $validated = $this->validateTodo($request);
+
+        $todo->update($validated);
+
+        return redirect()
+            ->route('todos.show', $todo)
+            ->with('success', 'TODOを更新しました。');
+    }
+
+    /**
+     * 作成・更新で共通のバリデーション(DRY: ルールを1箇所に集約)
+     * 検証に失敗すると自動で前の画面に戻り、エラーと入力値が引き継がれる
+     */
+    private function validateTodo(Request $request): array
+    {
+        return $request->validate(
             [
                 'title' => ['required', 'string', 'max:100'],
                 'description' => ['nullable', 'string', 'max:1000'],
@@ -51,12 +88,5 @@ class TodoController extends Controller
                 'description.max' => '内容は1000文字以内で入力してください。',
             ],
         );
-
-        Todo::create($validated);
-
-        // PRG パターン: 保存後はリダイレクトして二重登録を防ぐ
-        return redirect()
-            ->route('todos.index')
-            ->with('success', 'TODOを作成しました。');
     }
 }

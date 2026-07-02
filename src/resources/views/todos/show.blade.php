@@ -23,6 +23,7 @@
     </dl>
 
     <p>
+        <a class="button" href="{{ route('todos.edit', $todo) }}">編集</a>
         <a href="{{ route('todos.index') }}">一覧へ戻る</a>
     </p>
 @endsection
