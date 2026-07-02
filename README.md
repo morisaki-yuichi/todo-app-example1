@@ -63,6 +63,10 @@ docker compose exec app php artisan migrate
 どの順番で作ったかを、コミット差分へのリンクつきでまとめています。
 「写経しながら追体験したい」場合はここから始めてください。
 
+あわせて **[Laravel 概念解説集](docs/00_project/laravel-concepts.md)** に、MVC・マイグレーション・
+Eloquent・CSRF などの概念を「一言定義 → なぜ必要か → このリポジトリでの実例」の形で
+まとめています。差分を読んでいて用語に詰まったらこちらへ。
+
 ## スクラム成果物(ドキュメント)
 
 - [プロダクトロードマップ](docs/00_project/roadmap.md)
