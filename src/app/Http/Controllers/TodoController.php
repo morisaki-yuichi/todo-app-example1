@@ -72,6 +72,20 @@ class TodoController extends Controller
     }
 
     /**
+     * 完了/未完了を切り替える
+     */
+    public function toggle(Todo $todo)
+    {
+        $todo->update(['completed' => ! $todo->completed]);
+
+        // back(): 一覧・詳細どちらから押されても元の画面に戻す
+        return back()->with(
+            'success',
+            $todo->completed ? '「' . $todo->title . '」を完了にしました。' : '「' . $todo->title . '」を未完了に戻しました。',
+        );
+    }
+
+    /**
      * 作成・更新で共通のバリデーション(DRY: ルールを1箇所に集約)
      * 検証に失敗すると自動で前の画面に戻り、エラーと入力値が引き継がれる
      */

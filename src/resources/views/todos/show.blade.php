@@ -22,6 +22,12 @@
         <dd>{{ $todo->updated_at->format('Y/m/d H:i') }}</dd>
     </dl>
 
+    <form method="POST" action="{{ route('todos.toggle', $todo) }}">
+        @csrf
+        @method('PATCH')
+        <button type="submit">{{ $todo->completed ? '未完了に戻す' : '完了にする' }}</button>
+    </form>
+
     <p>
         <a class="button" href="{{ route('todos.edit', $todo) }}">編集</a>
         <a href="{{ route('todos.index') }}">一覧へ戻る</a>
