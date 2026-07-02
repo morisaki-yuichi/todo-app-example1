@@ -8,12 +8,12 @@
 
 | # | タスク | 完了条件 | 状態 |
 |---|---|---|---|
-| 1 | `feature/setup` ブランチ作成 | ブランチ上で作業が始められる | 未着手 |
-| 2 | `docker-compose.yml` 作成 | bitnami/laravel + MySQL の 2 コンテナが定義されている | 未着手 |
-| 3 | Laravel プロジェクト起動 | コンテナ起動で Laravel の雛形が生成される | 未着手 |
-| 4 | DB 接続確認 | コンテナ内から `php artisan migrate` が成功する | 未着手 |
-| 5 | ブラウザで初期ページ表示 | http://localhost:8000 で Laravel の画面が見える | 未着手 |
-| 6 | main へマージ + スプリント文書化 | レビュー・レトロが `docs/01_sprint1/` に残っている | 未着手 |
+| 1 | `feature/setup` ブランチ作成 | ブランチ上で作業が始められる | 完了 ✅ |
+| 2 | `docker-compose.yml` 作成 | bitnami/laravel + MySQL の 2 コンテナが定義されている | 完了 ✅(bitnamilegacy に変更) |
+| 3 | Laravel プロジェクト起動 | コンテナ起動で Laravel の雛形が生成される | 完了 ✅ |
+| 4 | DB 接続確認 | コンテナ内から `php artisan migrate` が成功する | 完了 ✅ |
+| 5 | ブラウザで初期ページ表示 | http://localhost:8080 で Laravel の画面が見える(ポートは 8000→8080 に変更) | 完了 ✅ |
+| 6 | main へマージ + スプリント文書化 | レビュー・レトロが `docs/01_sprint1/` に残っている | 完了 ✅(PR #1) |
 
 ## スコープ外(Sprint 1 ではやらないこと)
 
