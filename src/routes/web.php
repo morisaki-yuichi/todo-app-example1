@@ -7,3 +7,5 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/todos');
 
 Route::get('/todos', [TodoController::class, 'index'])->name('todos.index');
+Route::get('/todos/create', [TodoController::class, 'create'])->name('todos.create');
+Route::post('/todos', [TodoController::class, 'store'])->name('todos.store');

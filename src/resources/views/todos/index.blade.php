@@ -5,8 +5,10 @@
 @section('content')
     <h2>TODO一覧</h2>
 
+    <p><a class="button" href="{{ route('todos.create') }}">新規作成</a></p>
+
     @if ($todos->isEmpty())
-        <p>TODOがありません。</p>
+        <p>TODOがありません。「新規作成」から最初のTODOを登録しましょう。</p>
     @else
         <ul class="todo-list">
             @foreach ($todos as $todo)
