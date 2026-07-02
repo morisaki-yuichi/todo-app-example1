@@ -57,6 +57,12 @@ docker compose exec app php artisan migrate
     └── 04_sprint4/
 ```
 
+## 学習者向け: 作り方を辿る
+
+**[開発トレースガイド](docs/00_project/dev-walkthrough.md)** に、どのファイルのどの部分を
+どの順番で作ったかを、コミット差分へのリンクつきでまとめています。
+「写経しながら追体験したい」場合はここから始めてください。
+
 ## スクラム成果物(ドキュメント)
 
 - [プロダクトロードマップ](docs/00_project/roadmap.md)
