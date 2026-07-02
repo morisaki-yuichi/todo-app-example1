@@ -30,6 +30,7 @@
 
     <p>
         <a class="button" href="{{ route('todos.edit', $todo) }}">編集</a>
+        <a class="button danger" href="{{ route('todos.delete', $todo) }}">削除</a>
         <a href="{{ route('todos.index') }}">一覧へ戻る</a>
     </p>
 @endsection

@@ -86,6 +86,26 @@ class TodoController extends Controller
     }
 
     /**
+     * 削除確認ページを表示する(誤操作防止のワンクッション)
+     */
+    public function confirmDelete(Todo $todo)
+    {
+        return view('todos.delete', ['todo' => $todo]);
+    }
+
+    /**
+     * TODO を削除する
+     */
+    public function destroy(Todo $todo)
+    {
+        $todo->delete();
+
+        return redirect()
+            ->route('todos.index')
+            ->with('success', '「' . $todo->title . '」を削除しました。');
+    }
+
+    /**
      * 作成・更新で共通のバリデーション(DRY: ルールを1箇所に集約)
      * 検証に失敗すると自動で前の画面に戻り、エラーと入力値が引き継がれる
      */
