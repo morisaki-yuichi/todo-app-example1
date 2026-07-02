@@ -18,6 +18,15 @@ class TodoController extends Controller
     }
 
     /**
+     * TODO の詳細を表示する
+     * (ルートモデルバインディング: {todo} の ID から自動取得。存在しなければ 404)
+     */
+    public function show(Todo $todo)
+    {
+        return view('todos.show', ['todo' => $todo]);
+    }
+
+    /**
      * 新規作成フォームを表示する
      */
     public function create()

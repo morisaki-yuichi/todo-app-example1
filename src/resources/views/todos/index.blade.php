@@ -14,7 +14,7 @@
             @foreach ($todos as $todo)
                 <li class="todo-item {{ $todo->completed ? 'is-completed' : '' }}">
                     <span class="todo-status">{{ $todo->completed ? '完了' : '未完了' }}</span>
-                    <span class="todo-title">{{ $todo->title }}</span>
+                    <span class="todo-title"><a href="{{ route('todos.show', $todo) }}">{{ $todo->title }}</a></span>
                     <span class="todo-date">{{ $todo->created_at->format('Y/m/d H:i') }}</span>
                 </li>
             @endforeach

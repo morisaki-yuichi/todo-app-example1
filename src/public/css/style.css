@@ -62,6 +62,24 @@ body {
     color: #777;
 }
 
+.todo-detail dt {
+    font-weight: bold;
+    margin-top: 0.75rem;
+}
+
+.todo-detail dd {
+    margin: 0.25rem 0 0;
+}
+
+.pre-wrap {
+    white-space: pre-wrap; /* 改行・空白をそのまま表示する */
+}
+
+.is-completed-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
 .errors {
     background: #fdecea;
     border: 1px solid #e57373;
