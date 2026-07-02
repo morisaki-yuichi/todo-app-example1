@@ -13,8 +13,13 @@
         <ul class="todo-list">
             @foreach ($todos as $todo)
                 <li class="todo-item {{ $todo->completed ? 'is-completed' : '' }}">
-                    <span class="todo-status">{{ $todo->completed ? '完了' : '未完了' }}</span>
-                    <span class="todo-title">{{ $todo->title }}</span>
+                    {{-- 状態変更なので GET リンクではなく PATCH フォームで送る --}}
+                    <form method="POST" action="{{ route('todos.toggle', $todo) }}">
+                        @csrf
+                        @method('PATCH')
+                        <button type="submit" class="toggle-button">{{ $todo->completed ? '完了' : '未完了' }}</button>
+                    </form>
+                    <span class="todo-title"><a href="{{ route('todos.show', $todo) }}">{{ $todo->title }}</a></span>
                     <span class="todo-date">{{ $todo->created_at->format('Y/m/d H:i') }}</span>
                 </li>
             @endforeach

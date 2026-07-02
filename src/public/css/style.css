@@ -56,10 +56,34 @@ body {
     padding: 0.1rem 0.4rem;
 }
 
+.toggle-button {
+    font-size: 0.8rem;
+    padding: 0.1rem 0.4rem;
+    cursor: pointer;
+}
+
 .todo-date {
     margin-left: auto;
     font-size: 0.8rem;
     color: #777;
+}
+
+.todo-detail dt {
+    font-weight: bold;
+    margin-top: 0.75rem;
+}
+
+.todo-detail dd {
+    margin: 0.25rem 0 0;
+}
+
+.pre-wrap {
+    white-space: pre-wrap; /* 改行・空白をそのまま表示する */
+}
+
+.is-completed-text {
+    text-decoration: line-through;
+    color: #999;
 }
 
 .errors {

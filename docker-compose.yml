@@ -9,6 +9,7 @@ services:
     ports:
       - "8080:8000" # PC側:コンテナ側(8000はPC上の別プロジェクトが使用中のため8080に)
     environment:
+      - APP_TIMEZONE=Asia/Tokyo # 日時の表示・保存を日本時間にする(デフォルトはUTC)
       # Laravel が読む DB 接続設定(接続先はサービス名 "mysql")
       - DB_CONNECTION=mysql
       - DB_HOST=mysql
