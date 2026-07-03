@@ -14,47 +14,53 @@ CRUD機能を持つTODOアプリを完成させる教材プロジェクトです
 
 | 分類 | 技術 |
 |---|---|
-| コンテナ | Docker Compose(bitnamilegacy/laravel) |
+| コンテナ | Docker Compose(**Laravel Sail**。Sprint 5 で bitnamilegacy から移行) |
 | バックエンド | Laravel 12 |
 | フロントエンド | Plain HTML/CSS(Blade テンプレート。JS/CSS フレームワーク不使用) |
 | データベース | MySQL 8.4 |
 
-## セットアップ
+## セットアップ(Laravel Sail)
 
 前提: Docker / Docker Compose が導入済みであること。
 
 ```bash
 git clone https://github.com/morisaki-yuichi/todo-app-example1.git
-cd todo-app-example1
-docker compose up -d
+cd todo-app-example1/src
+
+# 1. vendor/ がないと sail コマンドが使えないため、使い捨てコンテナで一度だけ composer install
+docker run --rm -u "$(id -u):$(id -g)" \
+  -v "$(pwd):/var/www/html" -w /var/www/html \
+  laravelsail/php85-composer:latest composer install
+
+# 2. 環境設定を用意して起動(初回はイメージのビルドで数分かかります)
+cp .env.example .env
+./vendor/bin/sail up -d
+./vendor/bin/sail artisan key:generate
+./vendor/bin/sail artisan migrate
 ```
 
-初回起動は Laravel の初期化のため数分かかります。起動後、ブラウザで
-**http://localhost:8080** を開いてください(ポート 8000 ではなく 8080 です)。
-
-マイグレーションはコンテナ起動時に自動実行されます。手動で行う場合:
-
-```bash
-docker compose exec app php artisan migrate
-```
+起動後、ブラウザで **http://localhost:8080** を開いてください。
+ポートを変えたい場合は `.env` の `APP_PORT`(と `VITE_PORT`)を編集します。
 
 ### 開発時のヒント
 
-- artisan の生成コマンドは所有者問題を避けるため `-u 1000:1000` で実行する
-  (例: `docker compose exec -u 1000:1000 app php artisan make:model Xxx`)
-- ブランチ切り替えで 500 エラーになったら `docker compose restart app`
+- artisan・composer は `./vendor/bin/sail artisan ...` / `sail composer ...` で実行する
+  (Sail がホストとユーザー ID を合わせるため、旧環境であった root 所有者問題は起きない)
+- ブランチ切り替えで 500 エラーになったら `./vendor/bin/sail restart laravel.test`
+- 停止は `./vendor/bin/sail down`(DB データはボリュームに残る)
 
 ## ディレクトリ構成
 
 ```
-├── docker-compose.yml   # Laravel + MySQL のコンテナ定義
 ├── src/                 # Laravel アプリケーション本体
+│   └── compose.yaml     # Laravel Sail のコンテナ定義(Laravel + MySQL)
 └── docs/                # スクラム成果物(すべてここに記録)
     ├── 00_project/      # ロードマップ、ユーザーストーリー、プロダクトバックログ、Q&A記録
     ├── 01_sprint1/      # 各スプリントのバックログ、レビュー、レトロスペクティブ
     ├── 02_sprint2/
     ├── 03_sprint3/
-    └── 04_sprint4/
+    ├── 04_sprint4/
+    └── 05_sprint5/      # 番外編: Laravel Sail 移行
 ```
 
 ## 学習者向け: 作り方を辿る
