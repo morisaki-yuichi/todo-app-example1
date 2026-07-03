@@ -8,13 +8,13 @@
 
 | # | タスク | 完了条件 | 状態 |
 |---|---|---|---|
-| 1 | ブランチ作成+仕様変更の記録 | qa-log に Q7 として決定を記録 | 未着手 |
-| 2 | laravel/sail パッケージ導入 | composer require が成功し sail:install で compose が生成される | 未着手 |
-| 3 | .env / .env.example 整備 | APP_PORT=8080・APP_TIMEZONE・DB 接続が .env 駆動になる | 未着手 |
-| 4 | 旧環境停止 → Sail 起動 → マイグレーション | sail up でアプリが 8080 で応答し、todos テーブルがある | 未着手 |
-| 5 | 動作確認(スモークテスト) | 一覧・作成・完了切替が動く | 未着手 |
-| 6 | 旧 compose 削除+README/ドキュメント更新 | クローン直後から Sail で起動できる手順が README にある | 未着手 |
-| 7 | PR・マージ・スプリント文書化 | main 反映+レビュー・レトロが docs/05_sprint5/ にある | 未着手 |
+| 1 | ブランチ作成+仕様変更の記録 | qa-log に Q7 として決定を記録 | 完了 ✅ |
+| 2 | laravel/sail パッケージ導入 | composer require が成功し sail:install で compose が生成される | 完了 ✅ |
+| 3 | .env / .env.example 整備 | APP_PORT=8080・APP_TIMEZONE・DB 接続が .env 駆動になる | 完了 ✅ |
+| 4 | 旧環境停止 → Sail 起動 → マイグレーション | sail up でアプリが 8080 で応答し、todos テーブルがある | 完了 ✅ |
+| 5 | 動作確認(スモークテスト) | 一覧・作成・完了切替が動く | 完了 ✅ |
+| 6 | 旧 compose 削除+README/ドキュメント更新 | クローン直後から Sail で起動できる手順が README にある | 完了 ✅ |
+| 7 | PR・マージ・スプリント文書化 | main 反映+レビュー・レトロが docs/05_sprint5/ にある | 完了 ✅ |
 
 ## 方針メモ
 

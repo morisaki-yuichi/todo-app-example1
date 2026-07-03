@@ -1,6 +1,7 @@
 # プロダクトロードマップ(全4スプリント)
 
 > **✅ 2026-07-03 プロジェクト完了**: 全4スプリント・全11 PBIを完了し、CRUD機能を持つTODOアプリが完成した。
+> **➕ 番外編 Sprint 5(同日)**: 開発環境を Laravel Sail に移行(PBI #12)。
 
 - **プロダクト**: CRUD 機能を持つ TODO アプリ
 - **技術スタック**: Docker(bitnami/laravel)+ Laravel + MySQL + Plain HTML/CSS
